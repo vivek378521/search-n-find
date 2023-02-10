@@ -6,11 +6,11 @@ function searchPosts(posts: Post[], searchTerm: string, sortBy: string): Post[] 
     // Check if the search term is a phrase within double quotes
     if (searchTerm.startsWith('"') && searchTerm.endsWith('"')) {
         // Perform exact match search
-        const phrase = searchTerm.slice(1, -1);
+        const phrase = searchTerm.slice(1, -1).toLowerCase();
         results = posts.filter((post) => {
             return (
-                post.name.includes(phrase) ||
-                post.description.includes(phrase)
+                post.name.toLowerCase().includes(phrase) ||
+                post.description.toLocaleLowerCase().includes(phrase)
             );
         });
     } else {

@@ -1,10 +1,33 @@
 import { searchPosts } from '../services/searchService';
 import posts from '../../mock_data.json';
 
+function isPositiveInteger(value: any): boolean {
+    return typeof value === "number" && Number.isInteger(value) && value > 0;
+}
+
+
+function validate(req: any) {
+    if (!isPositiveInteger(parseInt(req.query.pageNumber)) || !isPositiveInteger(parseInt(req.query.pageSize))) {
+        return {
+            error: true,
+            message: 'pageNumber and pageSize should be integer values'
+        }
+    }
+    return {
+        error: false,
+        message: ''
+    }
+}
 
 function search(req: any, res: any) {
     try {
-        console.log('idhr aaya');
+        const isValid = validate(req);
+        if (isValid.error === true) {
+            res.json({
+                error: isValid.message
+            })
+            return
+        }
         const encodedQuote = req.query.searchTerm as string || "";;
         const searchTerm = decodeURIComponent(encodedQuote);
         const sortBy = req.query.sortBy as string || "name";
