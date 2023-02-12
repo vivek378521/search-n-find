@@ -14,7 +14,6 @@ $ npm run dev
 ## Tech stack
 Nodejs, typescript
 
-## APPROACH
 ### API Design
 
 <base-url>/search?searchTerm=king&sortBy=name
