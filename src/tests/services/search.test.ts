@@ -2,6 +2,7 @@ import { searchPosts } from "../../services/searchService";
 
 const posts = [{ name: "Post 1", description: "Description 1", dateLastEdited: "2022-10-10" }, { name: "Post 2", description: "Description 2", dateLastEdited: "2022-11-10" }, { name: "Post 3", description: "Description 3", dateLastEdited: "2022-12-10" },];
 
+
 describe('search', () => {
     it('should return posts that match the exact search term within double quotes', () => {
         const searchTerm = '"Post 1"';

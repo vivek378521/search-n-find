@@ -29,10 +29,11 @@ function searchPosts(posts: Post[], searchTerm: string, sortBy: string): Post[] 
             return match;
         });
     }
-    if (sortBy === "name") {
-        results.sort((a, b) => (a.name > b.name ? 1 : -1));
-    } else if (sortBy === "dateLastEdited") {
+    if (sortBy === "dateLastEdited") {
         results.sort((a, b) => (new Date(a.dateLastEdited) < new Date(b.dateLastEdited) ? 1 : -1));
+    }
+    else {
+        results.sort((a, b) => (a.name > b.name ? 1 : -1));
     }
 
     return results;
